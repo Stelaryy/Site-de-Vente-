@@ -1,0 +1,312 @@
+/* === THEME ESPACE === */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    background: #050816;
+    overflow-x: hidden;
+}
+
+/* --- FOND ÉTOILÉ --- */
+.stars, .stars2, .stars3 {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+    animation: moveStars 120s linear infinite;
+    z-index: -3;
+}
+.stars2 { animation-duration: 240s; opacity: 0.6; }
+.stars3 { animation-duration: 360s; opacity: 0.4; }
+
+@keyframes moveStars {
+    from { background-position: 0 0; }
+    to { background-position: -10000px 5000px; }
+}
+
+/* --- TITRES --- */
+h1, h2 {
+    text-align: center;
+    color: #61dafb;
+    text-shadow: 0 0 10px #61dafb;
+    margin-top: 20px;
+}
+.user {
+    text-align: center;
+    margin: 15px 0;
+    color: #9bc9ff;
+}
+
+/* --- NAVIGATION --- */
+nav {
+    text-align: center;
+    margin-top: 10px;
+}
+nav a {
+    display: inline-block;
+    margin: 8px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: #1f2a48;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+nav a:hover {
+    background: #61dafb;
+    color: #050816;
+}
+
+/* --- CATALOGUE --- */
+.catalogue {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 25px;
+    padding: 30px;
+    max-width: 1200px;
+    margin: auto;
+}
+.article {
+    position: relative;
+    background: rgba(255,255,255,0.05);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    transition: all 0.4s ease;
+    text-align: center;
+}
+.article:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px rgba(97,218,251,0.7);
+}
+
+/* --- IMAGE ET OVERLAY --- */
+.image-container {
+    position: relative;
+    overflow: hidden;
+}
+.image-container img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+.article:hover img {
+    transform: scale(1.05);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255,255,255,0.95);
+    color: #050816;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+.article:hover .overlay {
+    opacity: 1;
+}
+
+.overlay button {
+    background: #61dafb;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.overlay button:hover {
+    background: #1f2a48;
+    color: white;
+}
+.overlay .prix {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* --- PANIER --- */
+ul#panier {
+    list-style: none;
+    padding: 0;
+    max-width: 600px;
+    margin: 20px auto;
+}
+.produit {
+    background: rgba(255,255,255,0.1);
+    margin: 10px 0;
+    padding: 12px;
+    border-radius: 15px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.produit img {
+    border-radius: 8px;
+    margin-right: 10px;
+}
+.supprimer {
+    background: #ff5252;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.supprimer:hover {
+    background: #ff8585;
+}
+
+/* --- BOUTONS GLOBAUX --- */
+.btn-achat, .btn-logout {
+    background: #61dafb;
+    color: #050816;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.btn-achat:hover, .btn-logout:hover {
+    background: #1f2a48;
+    color: white;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 600px) {
+    .catalogue {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+    .overlay button {
+        padding: 8px 14px;
+    }
+}
+
+/* === POPUP CONNEXION === */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(5, 8, 22, 0.85);
+    backdrop-filter: blur(6px);
+    display: none; /* masqué par défaut */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: fadeIn 0.4s ease;
+}
+
+.popup-content {
+    background: rgba(15, 20, 40, 0.95);
+    border: 1px solid rgba(97, 218, 251, 0.3);
+    border-radius: 20px;
+    padding: 40px 50px;
+    text-align: center;
+    color: #ffffff;
+    box-shadow: 0 0 30px rgba(97, 218, 251, 0.5);
+    max-width: 400px;
+    animation: slideIn 0.5s ease;
+}
+
+.popup-content h2 {
+    color: #61dafb;
+    margin-bottom: 15px;
+    text-shadow: 0 0 15px #61dafb;
+}
+
+.popup-content p {
+    color: #c9dfff;
+    margin-bottom: 25px;
+}
+
+.popup-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn-popup {
+    display: inline-block;
+    background: #61dafb;
+    color: #050816;
+    padding: 10px 22px;
+    border-radius: 25px;
+    font-weight: bold;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.btn-popup:hover {
+    background: #1f2a48;
+    color: white;
+    box-shadow: 0 0 15px rgba(97, 218, 251, 0.6);
+}
+
+.btn-fermer {
+    background: transparent;
+    border: 2px solid #61dafb;
+    color: #61dafb;
+}
+
+.btn-fermer:hover {
+    background: #61dafb;
+    color: #050816;
+}
+
+/* --- ANIMATIONS --- */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* --- CATEGORIES --- */
+.categories {
+    text-align: center;
+    margin: 25px 0 15px;
+}
+
+.categories a {
+    display: inline-block;
+    margin: 6px;
+    padding: 8px 18px;
+    border-radius: 20px;
+    background: #1f2a48;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.categories a:hover {
+    background: #61dafb;
+    color: #050816;
+}
+
+.categories a.active {
+    background: #61dafb;
+    color: #050816;
+    box-shadow: 0 0 15px rgba(97, 218, 251, 0.7);
+}
+
+
