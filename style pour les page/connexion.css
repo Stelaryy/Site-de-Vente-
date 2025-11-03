@@ -1,0 +1,125 @@
+/* === THEME ESPACE - PAGE CONNEXION === */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    background: #050816;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    justify-content: center;
+    position: relative;
+}
+
+/* --- FOND ÉTOILÉ --- */
+.stars, .stars2, .stars3 {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+    animation: moveStars 120s linear infinite;
+    z-index: -3;
+}
+.stars2 { animation-duration: 240s; opacity: 0.6; }
+.stars3 { animation-duration: 360s; opacity: 0.4; }
+
+@keyframes moveStars {
+    from { background-position: 0 0; }
+    to { background-position: -10000px 5000px; }
+}
+
+/* --- TITRE --- */
+h1 {
+    text-align: center;
+    color: #61dafb;
+    text-shadow: 0 0 15px #61dafb;
+    margin-bottom: 25px;
+}
+
+/* --- FORMULAIRE --- */
+.form-connexion {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(97,218,251,0.3);
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    text-align: left;
+}
+
+.form-connexion label {
+    font-weight: bold;
+    color: #9bc9ff;
+    margin-top: 10px;
+}
+
+.form-connexion input {
+    margin-top: 5px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    background: rgba(255,255,255,0.15);
+    color: white;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.form-connexion input:focus {
+    background: rgba(255,255,255,0.25);
+    box-shadow: 0 0 10px #61dafb;
+}
+
+.btn-valider {
+    background: #61dafb;
+    color: #050816;
+    border: none;
+    margin-top: 20px;
+    padding: 12px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-valider:hover {
+    background: #1f2a48;
+    color: white;
+}
+
+/* --- MESSAGE D'ERREUR --- */
+.erreur {
+    color: #ff6b6b;
+    background: rgba(255, 0, 0, 0.1);
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
+}
+
+/* --- NAVIGATION --- */
+nav {
+    margin-top: 20px;
+}
+nav a {
+    color: #61dafb;
+    text-decoration: none;
+    transition: 0.3s;
+    font-weight: bold;
+}
+nav a:hover {
+    color: white;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 400px) {
+    .form-connexion {
+        width: 90%;
+        padding: 25px;
+    }
+}
